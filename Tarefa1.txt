@@ -1,0 +1,65 @@
+using System;
+
+class Empregado
+{
+    private string primeiroNome;
+    private string sobrenome;
+    private decimal salarioMensal;
+
+    public Empregado(string primeiroNome, string sobrenome, decimal salarioMensal)
+    {
+        this.primeiroNome = primeiroNome;
+        this.sobrenome = sobrenome;
+        this.salarioMensal = salarioMensal > 0 ? salarioMensal : 0;
+    }
+
+    // Getters e Setters
+    public string GetPrimeiroNome() => primeiroNome;
+    public void SetPrimeiroNome(string valor) => primeiroNome = valor;
+
+    public string GetSobrenome() => sobrenome;
+    public void SetSobrenome(string valor) => sobrenome = valor;
+
+    public decimal GetSalarioMensal() => salarioMensal;
+    public void SetSalarioMensal(decimal valor) => salarioMensal = valor > 0 ? valor : 0;
+
+    public decimal SalarioAnual() => salarioMensal * 12;
+
+    public void Apresentar() =>
+        Console.WriteLine($"Nome: {primeiroNome} {sobrenome} | Salário Mensal: {salarioMensal:C}");
+}
+
+class Program
+{
+    static void Main()
+    {
+        Empregado emp1 = new Empregado("Matumona", "Wangani", 1500);
+        Empregado emp2 = new Empregado("Luisa", "Maria", -200); // salário inválido → 0
+
+        Console.WriteLine("=== Salários Iniciais ===");
+        emp1.Apresentar();
+        emp2.Apresentar();
+
+        // Atribuir novo salário
+        emp1.SetSalarioMensal(2000);
+        emp2.SetSalarioMensal(1800);
+
+        Console.WriteLine("\n=== Salários Anuais Actualizados ===");
+        Console.WriteLine($"{emp1.GetPrimeiroNome()} {emp1.GetSobrenome()}: {emp1.SalarioAnual():C}/ano");
+        Console.WriteLine($"{emp2.GetPrimeiroNome()} {emp2.GetSobrenome()}: {emp2.SalarioAnual():C}/ano");
+    }
+}
+```
+
+**Saída esperada:**
+```
+=== Salários Iniciais ===
+Nome: Matumona Wangani | Salário Mensal: 1.500,00 Kz
+Nome: Luisa Maria | Salár0io Mensal: 0,00 Kz
+
+=== Salários Anuais Actualizados ===
+Matumona Wangani: 24.000,00 Kz/ano
+Luisa Maria: 21.600,00 Kz/ano
+
+
+
