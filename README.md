@@ -1,2 +1,2 @@
-# ProjectLing8
+# MATUMONA WANGANI
 Tarefa de LingProg VIII - MATUMONA WANGANI
